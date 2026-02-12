@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Oltre Way — Record Snow and the Post Hotel Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #6B2737;
+    --deep-burgundy: #4A1A26;
+    --cream: #F5F0E8;
+    --warm-ivory: #FAF7F2;
+    --terracotta: #C4724E;
+    --forest: #2D4A3E;
+    --navy: #1C2A3A;
+    --gold-accent: #C9A96E;
+    --text-dark: #2A2118;
+    --text-muted: #6B5E52;
+    --divider: #D4C9BC;
+    --alpine-blue: #4A6B8A;
+    --snow-white: #F0F4F8;
+    --pine: #3A5A4A;
+    --slate: #5A6B7A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--warm-ivory);
+    color: var(--text-dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .site-header {
+    text-align: center;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--warm-ivory);
+    position: relative;
+  }
+
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 1px;
+    background: var(--burgundy);
+  }
+
+  .site-header .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 600;
+  }
+
+  .site-header .brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    position: relative;
+    min-height: 55vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(240,244,248,0) 0%,
+        rgba(58,90,74,0.15) 40%,
+        rgba(42,33,24,0.7) 100%),
+      linear-gradient(135deg,
+        #c8d8e8 0%,
+        #a8c0d4 25%,
+        #7a9bb8 50%,
+        #5a7a94 75%,
+        #3a5a6a 100%);
+    background-size: cover;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 24px 48px;
+    max-width: 680px;
+  }
+
+  .hero-content .article-category {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--snow-white);
+    margin-bottom: 20px;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-accent);
+  }
+
+  .hero-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(14px, 2.2vw, 16.5px);
+    color: rgba(255,255,255,0.8);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.7;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* --- ARTICLE --- */
+  .article-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 40px);
+  }
+
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 36px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .article-body p {
+    font-size: clamp(16px, 2.5vw, 17.5px);
+    margin-bottom: 1.6em;
+    font-weight: 300;
+  }
+
+  .article-body p:first-child::first-letter {
+    font-family: 'Playfair Display', serif;
+    float: left;
+    font-size: 3.8em;
+    line-height: 0.8;
+    padding-right: 10px;
+    padding-top: 6px;
+    color: var(--burgundy);
+    font-weight: 400;
+  }
+
+  .section-break {
+    text-align: center;
+    padding: 12px 0 28px;
+    color: var(--divider);
+    letter-spacing: 12px;
+    font-size: 10px;
+  }
+
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-style: italic;
+    color: var(--burgundy);
+    text-align: center;
+    padding: 32px 20px;
+    margin: 32px 0;
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
+    line-height: 1.6;
+  }
+
+  .place-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: var(--pine);
+  }
+
+  /* --- STRATEGY CARD --- */
+  .strategy-card {
+    background: var(--cream);
+    border-left: 3px solid var(--pine);
+    padding: 28px 32px;
+    margin: 36px 0;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .strategy-card-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .strategy-card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .strategy-card p {
+    font-size: 14.5px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .strategy-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: var(--pine);
+    font-weight: 700;
+  }
+
+  /* --- FOOTER --- */
+  .article-footer {
+    max-width: 640px;
+    margin: 48px auto 60px;
+    padding: 32px clamp(24px, 5vw, 40px) 0;
+    border-top: 1px solid var(--divider);
+    text-align: center;
+  }
+
+  .article-footer .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .article-footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* --- SERIES NAV --- */
+  .series-nav {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px clamp(24px, 5vw, 40px) 0;
+    border-top: 1px solid var(--divider);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .series-nav a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .series-nav a:hover { color: var(--terracotta); }
+
+  .series-nav .series-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 400;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content .article-category { animation: fadeUp 0.8s ease-out 0.2s both; }
+  .hero-content .hero-title { animation: fadeUp 0.8s ease-out 0.4s both; }
+  .hero-content .hero-subtitle { animation: fadeUp 0.8s ease-out 0.6s both; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand-name">The Oltre Way</div>
+  <div class="brand-tagline">Travel Beyond the Ordinary</div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="article-category">Dispatches • Banff & Lake Louise</div>
+    <h1 class="hero-title">Record Snow and <em>the Post Hotel Strategy</em></h1>
+    <p class="hero-subtitle">On the snowiest December in recorded history, the $40 hostel bed that unlocked everything, and learning to buy the après without the room.</p>
+  </div>
+</section>
+
+<article class="article-container">
+
+  <div class="article-meta">
+    <span>Jonathan • The Oltre Way</span>
+    <span>January 2026</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>Banff had its snowiest December since record keeping started. I know this because I was standing inside it — waist-deep in the kind of Canadian Rockies powder that makes you forget every groomer you've ever carved, every resort you've ever called "pretty good." Lake Louise in a record snow year is not pretty good. It is the kind of scenery that makes you stop mid-run and stare at the mountains like an idiot while other skiers carve around you, because the peaks are doing something with the light that no one warned you about and your phone can't capture anyway.</p>
+
+    <p>We skied two days at Lake Louise and one at Banff Sunshine. The split was deliberate. Lake Louise for the views — those wide, impossible panoramas of the Canadian Rockies that make the Wasatch look like foothills — and Sunshine for the terrain, the higher elevation, the kind of snow that stays cold and dry when everything lower is already turning to cement. Three days. Two mountains. One of the best ski weekends I've had anywhere, including the Alps.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>Here is the part most people get wrong about ski trips to places like Banff and Lake Louise: they assume the experience requires the room. That to ski Lake Louise properly, you need to be paying four hundred dollars a night at the Fairmont, or that Banff's Post Hotel — with its legendary wine cellar and its fireside après and its immaculate Austrian-lodge atmosphere — demands you sleep there.</p>
+
+    <p>It doesn't. And knowing the difference between the places that require the room and the places that only require you to walk through the door is the entire foundation of how I travel.</p>
+
+    <div class="pull-quote">The Post Hotel doesn't check your key card at the bar. They check your taste. And that's free.</div>
+
+    <p>We stayed at <span class="place-name">HI Lake Louise</span> for two nights. A hostel. The kind of place where the walls are thin and the mattress is honest about what it is and the communal kitchen smells like someone else's dinner at 11 PM. A private room with a bathroom, clean and functional and close enough to the ski area that you could be in lift line within minutes of waking up. Nothing luxurious about it. Nothing aspirational. Just a bed in the right place at the right price.</p>
+
+    <p>And then, after skiing — after the kind of deep-powder day that leaves your quads burning and your face wind-chapped and your entire nervous system vibrating with that specific alpine exhaustion — we walked into the <span class="place-name">Post Hotel</span>.</p>
+
+    <p>The Post Hotel is the real thing. Not the Fairmont's grand-castle-on-the-lake performance of luxury, but the quiet, assured Austrian-lodge version — wood-paneled, warm, the kind of place where the wine list is a small novel and the fireplace has been burning since before you were born. The après scene at the Post is what people imagine when they picture "European ski lodge experience transplanted to the Rockies." It's intimate without being exclusive. Refined without being precious. The bartender knows wine. The chairs are deep. The windows show you the same mountains you just skied, but from the correct angle: horizontal, drink in hand, body finally still.</p>
+
+    <div class="strategy-card">
+      <div class="strategy-card-label">The Oltre Way • Lodging Strategy</div>
+      <div class="strategy-card-title">The Banff Split</div>
+      <p><span class="number">2</span> nights HI Lake Louise — private room, bathroom, proximity to slopes.</p>
+      <p><span class="number">1</span> night Sunshine Mountain Lodge — ski-in/ski-out, waking up on the mountain, first chair access with record snow.</p>
+      <p>Après at the Post Hotel both Lake Louise evenings. The wine, the fire, the atmosphere — accessed for the price of what you drink, not where you sleep.</p>
+    </div>
+
+    <p>The third night we moved to <span class="place-name">Sunshine Mountain Lodge</span>. One night. Ski-in/ski-out. The logic was simple: we'd done two days at Lake Louise with the hostel as base, and now we wanted to wake up on Sunshine Village itself, be first on the mountain, ski the record snow before anyone else touched it. A single night of splurge — not extravagant, just positioned — to close the trip with the one thing a hostel can't give you, which is the feeling of opening your door and being already there.</p>
+
+    <p>With record snow, being first on the mountain wasn't a luxury. It was the entire point.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>There is a calculation that happens on every ski trip I take, and it goes something like this: where does paying for the room actually improve the skiing? Banff doesn't have a Hyatt luxury property. Neither does Lake Louise. When there's no points play, no Globalist upgrade waiting, no suite with a view that justifies the rate, I don't pay for a room I'm only going to sleep in. I pay for the experiences the room would have given me — the Post Hotel bar, the Sunshine Mountain Lodge morning — and I sleep somewhere honest.</p>
+
+    <p>This isn't deprivation. It's allocation. The hostel freed up budget for an extra dinner. The one night at Sunshine Mountain Lodge was worth three nights at a mid-range hotel in Banff town that would have given us nothing except a longer drive to the lifts.</p>
+
+    <div class="pull-quote">The scenery at Lake Louise was out of this world. Not beautiful — that word is too small. The mountains were doing something that felt personal, like they'd been waiting for the snowiest December on record just so they could show you what they actually look like.</div>
+
+    <p>I keep coming back to the phrase "out of this world" because nothing else fits. I've skied the Dolomites, where the pink limestone at sunset makes you feel like you're on another planet. I've skied Jackson Hole, where the Tetons are so dramatic they look like a painting someone exaggerated. Banff and Lake Louise in record snow belong in that conversation. The peaks are bigger than you think they'll be. The snow sits on everything — the trees, the ridgelines, the rooftops in the village — with the kind of depth that makes the whole landscape look upholstered. And the light. January light in the Canadian Rockies is low and sharp and turns every mountain face into a study in blue and gold.</p>
+
+    <p>Two days at Lake Louise. One day at Sunshine. Three days of skiing in the snowiest December anyone can remember. A hostel, a lodge, and the Post Hotel bar. The total cost was a fraction of what most people pay for a weekend at a single resort hotel, and every dollar went exactly where it mattered.</p>
+
+    <p>The mountains don't care where you sleep. They care that you showed up.</p>
+
+  </div>
+</article>
+
+<div class="series-nav">
+  <a href="#" style="visibility: hidden;">
+    <span class="series-label">Previous</span>
+  </a>
+  <a href="#" style="text-align: right;">
+    <span class="series-label">Next Dispatch</span>
+    Jackson Hole: The Hostel at the Base
+  </a>
+</div>
+
+<footer class="article-footer">
+  <span class="brand-name">The Oltre Way</span>
+  <p>Where sophisticated taste meets strategic investment, and travel becomes transformation.</p>
+</footer>
+
+</body>
+</html>

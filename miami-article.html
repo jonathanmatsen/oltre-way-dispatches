@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Oltre Way — The 22-Hour Miami Day</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --burgundy: #6B2737;
+    --deep-burgundy: #4A1A26;
+    --cream: #F5F0E8;
+    --warm-ivory: #FAF7F2;
+    --terracotta: #C4724E;
+    --forest: #2D4A3E;
+    --navy: #1C2A3A;
+    --gold-accent: #C9A96E;
+    --text-dark: #2A2118;
+    --text-muted: #6B5E52;
+    --divider: #D4C9BC;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--warm-ivory);
+    color: var(--text-dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- HEADER BAR --- */
+  .site-header {
+    text-align: center;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--warm-ivory);
+    position: relative;
+  }
+
+  .site-header::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--burgundy);
+    margin: 0 auto;
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: var(--burgundy);
+    font-weight: 400;
+  }
+
+  .brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+    font-weight: 300;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    position: relative;
+    height: 85vh;
+    min-height: 560px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(28, 42, 58, 0.1) 0%,
+        rgba(28, 42, 58, 0.25) 40%,
+        rgba(28, 42, 58, 0.85) 80%,
+        rgba(28, 42, 58, 0.95) 100%
+      ),
+      linear-gradient(135deg, #1a1a2e 0%, #16213e 30%, #0f3460 60%, #1a1a2e 100%);
+    background-size: cover;
+  }
+
+  /* Atmospheric grain */
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  /* Subtle warm light leak */
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -20%;
+    width: 140%;
+    height: 60%;
+    background: radial-gradient(ellipse at 30% 100%, rgba(196, 114, 78, 0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 90%, rgba(201, 169, 110, 0.08) 0%, transparent 50%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 clamp(24px, 6vw, 80px) clamp(48px, 8vh, 80px);
+    max-width: 720px;
+  }
+
+  .article-category {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-accent);
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(36px, 6vw, 56px);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.15;
+    margin-bottom: 20px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-accent);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(16px, 2.5vw, 20px);
+    color: rgba(245, 240, 232, 0.7);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* --- ARTICLE BODY --- */
+  .article-container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 40px);
+  }
+
+  .article-meta {
+    padding: 40px 0 36px;
+    border-bottom: 1px solid var(--divider);
+    margin-bottom: 44px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .article-meta span {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .article-body p {
+    font-size: clamp(16.5px, 1.8vw, 18px);
+    margin-bottom: 1.65em;
+    color: var(--text-dark);
+  }
+
+  .article-body p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8em;
+    float: left;
+    line-height: 0.8;
+    margin: 6px 12px 0 -3px;
+    color: var(--burgundy);
+    font-weight: 700;
+  }
+
+  .article-body .pull-quote {
+    margin: 48px 0 48px -20px;
+    padding: 0 0 0 24px;
+    border-left: 2px solid var(--terracotta);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(20px, 2.8vw, 24px);
+    font-style: italic;
+    color: var(--burgundy);
+    line-height: 1.55;
+    font-weight: 400;
+  }
+
+  .section-break {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--divider);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    letter-spacing: 12px;
+  }
+
+  .place-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.02em;
+    color: var(--forest);
+  }
+
+  .time-stamp {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.88em;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+  }
+
+  /* --- FOOTER --- */
+  .article-footer {
+    margin-top: 60px;
+    padding: 40px 0 60px;
+    border-top: 1px solid var(--divider);
+    text-align: center;
+  }
+
+  .article-footer .brand-name {
+    font-size: 11px;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .article-footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    font-style: italic;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content .article-category {
+    animation: fadeUp 0.8s ease-out 0.2s both;
+  }
+  .hero-content .hero-title {
+    animation: fadeUp 0.8s ease-out 0.4s both;
+  }
+  .hero-content .hero-subtitle {
+    animation: fadeUp 0.8s ease-out 0.6s both;
+  }
+
+  .article-body p, .article-body .pull-quote, .section-break {
+    animation: fadeUp 0.6s ease-out both;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand-name">The Oltre Way</div>
+  <div class="brand-tagline">Travel Beyond the Ordinary</div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="article-category">Dispatches • Miami</div>
+    <h1 class="hero-title">The 22-Hour <em>Miami Day</em></h1>
+    <p class="hero-subtitle">On standby flights at midnight, sleeping until the afternoon, and the cocktail that stopped time at Panamerico.</p>
+  </div>
+</section>
+
+<article class="article-container">
+
+  <div class="article-meta">
+    <span>Jonathan • The Oltre Way</span>
+    <span>February 8, 2026</span>
+  </div>
+
+  <div class="article-body">
+
+    <p>There's a version of Miami that exists only between midnight and dawn—when the standby board clears, when the flight you weren't sure you'd make deposits you curbside at MIA, when the Uber driver doesn't ask where you're going because at this hour in this city, the answer is always forward. I landed somewhere around 5 a.m., texted Kyra, and showed up at the Betsy on Ocean Drive with nothing but a carry-on and the particular confidence of someone who's done this before.</p>
+
+    <p>I slept until 12:45. Not because I was tired—though I was—but because Miami mornings belong to people on vacation. I am not on vacation. I'm doing something harder to explain and more interesting to live: I'm here because my best friend is here for work, because I can fly standby for the cost of a decent dinner, and because sometimes the correct response to a Friday evening in La Jolla is to simply leave it.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p><span class="time-stamp">1:15 PM</span> — First stop: <span class="place-name">Pura Vida</span>, because smoothies before decisions. The sidewalk tables on Lincoln Road catch that particular South Beach light that makes everything look like a film still from the early 2000s, before the algorithms ruined spontaneity. This is my second year running this exact play—Kyra in Miami for work, me materializing from a red-eye—and it's becoming a tradition in the best way, which is to say: unplanned, repeated, and better each time.</p>
+
+    <p>We checked out of the Betsy and Ubered to the <span class="place-name">Hyatt Centric Brickell</span>. The room situation is strategic: split three ways with Kyra and her friend, which means the nightly rate becomes almost irrelevant. This is the part the luxury travel internet never talks about—that some of the best trips aren't optimized through points or status, but through the simple arithmetic of good friendships.</p>
+
+    <div class="pull-quote">The best travel hack isn't a credit card signup bonus. It's having friends whose lives intersect with yours in interesting cities.</div>
+
+    <p><span class="time-stamp">3:00 PM</span> — One hour on a work call, because the life that funds the spontaneity requires occasional maintenance. Then: <span class="place-name">Casa Tua Cucina</span> in the Brickell City Centre for a snack—the kind of place that understands the difference between feeding you and nourishing the afternoon. Light enough to keep momentum. Good enough to feel like you're in the right city.</p>
+
+    <p><span class="time-stamp">5:30 PM</span> — The 19th floor hot tub. This is the in-between hour, the one most people waste scrolling or napping or "getting ready." But here's what I've learned from doing this repeatedly: the transition between daytime Miami and nighttime Miami requires a liminal space. Hot water, skyline, the sun doing that thing it does over Biscayne Bay where it turns the buildings into copper and rose gold. You don't plan these moments. You create the conditions and let them arrive.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p><span class="time-stamp">8:30 PM</span> — Dinner at <span class="place-name">Amazonico</span>, which does the Latin-Japanese thing with enough conviction to justify the scene. Brickell dining is a specific energy—dressed-up, slightly performative, unapologetically gorgeous. The food is good. The drinks are better. The company is what makes it matter.</p>
+
+    <p>But the evening's real revelation was waiting two blocks and one world away.</p>
+
+    <p><span class="time-stamp">11:00 PM</span> — <span class="place-name">Panamerico</span>. I'm going to say something I don't say lightly, as someone who has sat at cocktail bars in Mexico City, Tbilisi, Tokyo, and a disused mine in Zacatecas: the drinks here are among the best I've ever had. Not in the overwrought, fourteen-ingredient, smoke-infused-under-a-cloche way. In the way that stops your conversation mid-sentence because something in the glass just reorganized your understanding of what a cocktail can be.</p>
+
+    <div class="pull-quote">The difference between a good bar and a great bar is the same as the difference between a pretty view and a place that changes how you see.</div>
+
+    <p>This is the thing about Miami that the "best rooftop bars" listicles will never capture: the city's real pulse lives in these transitional moments, in the spaces between the known quantities. Amazonico was the plan. Panamerico was the discovery. And now—past midnight, waiting for Kyra outside the bathroom at <span class="place-name">Boombox</span>—I'm writing this on my phone because some nights demand to be remembered in real time, before the morning smooths them into anecdote.</p>
+
+    <div class="section-break">• • •</div>
+
+    <p>The flight cost less than tonight's dinner. The hotel room, split three ways, costs less than my weekly groceries. The 19th-floor hot tub was free with the room. And yet: Amazonico, Panamerico, Boombox past midnight—this is not a budget trip. This is strategic travel at its most honest. Know what's worth paying for. Know what isn't. Have the kind of friendships that make the economics irrelevant and the experiences unrepeatable.</p>
+
+    <p>Twenty-two hours ago I was in La Jolla, wondering if I'd make the standby list. Now I'm in Brickell, slightly buzzed on whatever Panamerico put in that glass, watching the 1 a.m. crowd filter into a place called Boombox, and I can tell you with certainty: the right answer to "should I go?" is almost always yes. The cost of not going is always higher than the flight.</p>
+
+  </div>
+
+  <footer class="article-footer">
+    <span class="brand-name">The Oltre Way</span>
+    <p>Where sophisticated taste meets strategic investment, and travel becomes transformation.</p>
+  </footer>
+
+</article>
+
+</body>
+</html>
