@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Oltre Way - Travel Dispatches</title>
+  <title>The Oltre Way - Luxury Travel Dispatches</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Serif+4:ital,wght@0,200;0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Space+Mono:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -17,6 +17,8 @@
       --navy: #1C2A3A;
       --gold-accent: #C9A96E;
       --gold-light: #E8D4B8;
+      --rose-gold: #D4A5A5;
+      --copper: #B87333;
       --text-dark: #2A2118;
       --text-light: #6B5E52;
       --divider: #D4C9BC;
@@ -35,6 +37,81 @@
       line-height: 1.9;
       -webkit-font-smoothing: antialiased;
       letter-spacing: 0.3px;
+      transition: background-color 0.05s ease-out;
+    }
+
+    /* --- FIXED READING PROGRESS --- */
+    #reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-light) 0%, var(--rose-gold) 50%, var(--gold-light) 100%);
+      z-index: 1000;
+      width: 0%;
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.5);
+    }
+
+    /* --- NAVBAR --- */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 40px;
+      background: rgba(254, 253, 251, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.15);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      opacity: 0;
+      animation: slideDown 0.6s cubic-bezier(0.23, 1, 0.320, 1) 0.2s forwards;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: var(--burgundy);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+    }
+
+    .navbar-brand:hover {
+      text-shadow: 0 0 12px rgba(201, 169, 110, 0.4);
+      color: var(--rose-gold);
+    }
+
+    .navbar-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      text-decoration: none;
+      transition: all 0.4s ease;
+      opacity: 0.7;
+    }
+
+    .navbar-link:hover {
+      opacity: 1;
+      color: var(--rose-gold);
+      text-shadow: 0 0 12px rgba(212, 165, 165, 0.3);
     }
 
     /* --- HERO SECTION --- */
@@ -47,42 +124,58 @@
       overflow: hidden;
       padding: 80px 40px;
       background: linear-gradient(180deg, var(--off-white) 0%, var(--cream) 100%);
+      margin-top: 60px;
     }
 
     .hero-intro::before {
       content: '';
       position: absolute;
-      top: 0;
+      top: -20%;
       right: -10%;
-      width: 40%;
-      height: 100%;
-      background: radial-gradient(ellipse at 50% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 70%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 165, 165, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
       pointer-events: none;
+      transition: all 0.8s ease;
+    }
+
+    .hero-intro:hover::before {
+      background: radial-gradient(circle, rgba(212, 165, 165, 0.15) 0%, transparent 70%);
     }
 
     .hero-intro::after {
       content: '';
       position: absolute;
-      bottom: 0;
+      bottom: -10%;
       left: -5%;
-      width: 35%;
-      height: 80%;
-      background: radial-gradient(ellipse at 50% 50%, rgba(107, 39, 55, 0.03) 0%, transparent 70%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(107, 39, 55, 0.04) 0%, transparent 70%);
+      border-radius: 50%;
       pointer-events: none;
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       text-align: center;
       max-width: 900px;
       opacity: 0;
-      animation: fadeIn 1.2s ease-out 0.3s forwards;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) 0.3s forwards;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
     }
 
     .hero-eyebrow {
@@ -90,10 +183,11 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-accent);
+      color: var(--rose-gold);
       margin-bottom: 20px;
       font-weight: 500;
       opacity: 0.8;
+      text-shadow: 0 0 8px rgba(212, 165, 165, 0.2);
     }
 
     .hero-title {
@@ -104,6 +198,7 @@
       line-height: 1.15;
       margin-bottom: 28px;
       letter-spacing: -1px;
+      text-shadow: 0 8px 16px rgba(201, 169, 110, 0.08);
     }
 
     .hero-subtitle {
@@ -129,15 +224,32 @@
       text-decoration: none;
       padding: 14px 40px;
       border: 1px solid var(--text-dark);
-      transition: all 0.4s ease;
-      opacity: 0.6;
-      font-weight: 400;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gold-light);
+      transition: left 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+      z-index: -1;
     }
 
     .hero-cta:hover {
-      background: var(--text-dark);
       color: var(--off-white);
-      opacity: 1;
+      border-color: var(--gold-light);
+      transform: scale(1.03);
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+    }
+
+    .hero-cta:hover::before {
+      left: 0;
     }
 
     .scroll-indicator {
@@ -146,7 +258,7 @@
       left: 50%;
       transform: translateX(-50%);
       opacity: 0;
-      animation: fadeIn 1.2s ease-out 1.2s forwards;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) 1.2s forwards;
     }
 
     .scroll-indicator-text {
@@ -157,7 +269,7 @@
       color: var(--taupe);
       margin-bottom: 12px;
       text-align: center;
-      opacity: 0.7;
+      opacity: 0.6;
     }
 
     .scroll-indicator svg {
@@ -166,7 +278,7 @@
       stroke: var(--taupe);
       stroke-width: 1.5;
       fill: none;
-      animation: scrollBounce 2.5s ease-in-out infinite;
+      animation: scrollBounce 2.5s cubic-bezier(0.23, 1, 0.320, 1) infinite;
       opacity: 0.5;
     }
 
@@ -197,17 +309,31 @@
       line-height: 1.6;
       font-weight: 400;
       opacity: 0;
-      animation: fadeUp 1s ease-out forwards;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
       margin-bottom: 32px;
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 8px;
+      border: 1px solid rgba(201, 169, 110, 0.1);
+      box-shadow: 0 8px 32px rgba(107, 39, 55, 0.05);
+      transition: all 0.6s ease;
+    }
+
+    .philosophy-quote:hover {
+      background: rgba(255, 255, 255, 0.4);
+      border-color: rgba(212, 165, 165, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(212, 165, 165, 0.1);
     }
 
     .philosophy-quote::before {
       content: '„';
       display: block;
       font-size: 64px;
-      color: var(--gold-accent);
+      color: var(--rose-gold);
       margin-bottom: -20px;
-      opacity: 0.4;
+      opacity: 0.3;
     }
 
     .philosophy-text {
@@ -215,11 +341,17 @@
       line-height: 2;
       color: var(--text-dark);
       opacity: 0;
-      animation: fadeUp 1s ease-out 0.2s forwards;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) 0.2s forwards;
     }
 
     .philosophy-text p {
       margin-bottom: 24px;
+      transition: all 0.4s ease;
+    }
+
+    .philosophy-text p:hover {
+      text-shadow: 0 0 12px rgba(212, 165, 165, 0.2);
+      color: var(--rose-gold);
     }
 
     .philosophy-text p:first-child {
@@ -230,11 +362,7 @@
     .philosophy-text strong {
       font-weight: 500;
       letter-spacing: 1px;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      color: var(--burgundy);
     }
 
     @media (max-width: 1024px) {
@@ -254,6 +382,8 @@
     .dispatches-intro {
       text-align: center;
       margin-bottom: 120px;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) forwards;
     }
 
     .dispatches-eyebrow {
@@ -261,9 +391,10 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold-accent);
+      color: var(--rose-gold);
       margin-bottom: 16px;
       font-weight: 500;
+      text-shadow: 0 0 8px rgba(212, 165, 165, 0.15);
     }
 
     .dispatches-title {
@@ -273,6 +404,7 @@
       margin-bottom: 16px;
       font-weight: 400;
       letter-spacing: -0.5px;
+      text-shadow: 0 8px 16px rgba(201, 169, 110, 0.08);
     }
 
     .dispatches-subtitle {
@@ -282,6 +414,13 @@
       color: var(--text-light);
       font-style: italic;
       font-weight: 300;
+    }
+
+    .section-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--rose-gold), transparent);
+      margin: 40px auto 80px;
     }
 
     .dispatches-grid {
@@ -295,10 +434,10 @@
       height: 480px;
       cursor: pointer;
       opacity: 0;
-      animation: fadeUp 0.8s ease-out forwards;
+      animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.320, 1) forwards;
       text-decoration: none;
       color: inherit;
-      group: dispatch;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .dispatch-card:nth-child(1) { animation-delay: 0.1s; }
@@ -311,14 +450,14 @@
     .dispatch-card-bg {
       position: absolute;
       inset: 0;
-      border-radius: 2px;
+      border-radius: 8px;
       overflow: hidden;
       transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .dispatch-card:hover .dispatch-card-bg {
-      transform: scale(1.02);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+      transform: scale(1.03);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
     }
 
     .dispatch-card:nth-child(1) .dispatch-card-bg {
@@ -330,30 +469,30 @@
     }
 
     .dispatch-card:nth-child(3) .dispatch-card-bg {
-      background: linear-gradient(135deg, #1a2a3a 0%, #0f1a2a 50%, #0a0f1a 100%);
+      background: linear-gradient(135deg, #2a1a2e 0%, #1a0a2e 50%, #0f0a1a 100%);
     }
 
     .dispatch-card:nth-child(4) .dispatch-card-bg {
-      background: linear-gradient(135deg, #1a1a2a 0%, #0f0f2a 50%, #0a0a1a 100%);
+      background: linear-gradient(135deg, #1a1028 0%, #0f0f2a 50%, #0a0a1a 100%);
     }
 
     .dispatch-card:nth-child(5) .dispatch-card-bg {
-      background: linear-gradient(135deg, #2a1a2a 0%, #1a0a2a 50%, #0f0a1a 100%);
+      background: linear-gradient(135deg, #3a2a2a 0%, #2a1a2a 50%, #1a0a1a 100%);
     }
 
     .dispatch-card:nth-child(6) .dispatch-card-bg {
-      background: linear-gradient(135deg, #3a2a2a 0%, #2a1a2a 50%, #1a0a1a 100%);
+      background: linear-gradient(135deg, #4a3a3a 0%, #3a2a2a 50%, #2a1a1a 100%);
     }
 
     .dispatch-card-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%);
-      transition: all 0.6s ease;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .dispatch-card:hover .dispatch-card-overlay {
-      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.65) 100%);
+      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.7) 100%);
     }
 
     .dispatch-card-content {
@@ -365,7 +504,7 @@
       flex-direction: column;
       justify-content: flex-end;
       color: white;
-      transition: all 0.6s ease;
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     .dispatch-card:hover .dispatch-card-content {
@@ -381,11 +520,13 @@
       margin-bottom: 16px;
       font-weight: 400;
       opacity: 0.8;
-      transition: opacity 0.4s ease;
+      text-shadow: 0 0 8px rgba(232, 212, 184, 0.2);
+      transition: all 0.4s ease;
     }
 
     .dispatch-card:hover .dispatch-card-category {
       opacity: 1;
+      text-shadow: 0 0 16px rgba(232, 212, 184, 0.4);
     }
 
     .dispatch-card-title {
@@ -395,11 +536,13 @@
       line-height: 1.35;
       margin-bottom: 12px;
       letter-spacing: -0.3px;
-      transition: transform 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
     }
 
     .dispatch-card:hover .dispatch-card-title {
-      transform: translateY(-4px);
+      transform: translateY(-6px);
+      text-shadow: 0 0 20px rgba(232, 212, 184, 0.4);
     }
 
     .dispatch-card-location {
@@ -410,11 +553,11 @@
       color: rgba(255, 255, 255, 0.6);
       margin-bottom: 20px;
       font-weight: 300;
-      transition: color 0.4s ease;
+      transition: all 0.4s ease;
     }
 
     .dispatch-card:hover .dispatch-card-location {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .dispatch-card-teaser {
@@ -424,11 +567,11 @@
       margin-bottom: 24px;
       max-height: 80px;
       overflow: hidden;
-      transition: color 0.4s ease;
+      transition: all 0.4s ease;
     }
 
     .dispatch-card:hover .dispatch-card-teaser {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.95);
     }
 
     .dispatch-card-arrow {
@@ -439,23 +582,27 @@
       color: var(--gold-light);
       text-decoration: none;
       font-weight: 400;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
       display: inline-block;
       opacity: 0.7;
+      text-shadow: 0 0 8px rgba(232, 212, 184, 0.15);
     }
 
     .dispatch-card:hover .dispatch-card-arrow {
       opacity: 1;
-      transform: translateX(8px);
+      transform: translateX(12px);
+      text-shadow: 0 0 16px rgba(232, 212, 184, 0.3);
     }
 
     /* --- FOOTER --- */
     .site-footer {
       margin-top: 200px;
       padding: 120px 40px 80px;
-      border-top: 1px solid var(--divider);
-      background: linear-gradient(180deg, var(--off-white) 0%, var(--cream) 100%);
+      border-top: 1px solid rgba(201, 169, 110, 0.2);
+      background: linear-gradient(180deg, var(--off-white) 0%, rgba(212, 165, 165, 0.03) 100%);
       text-align: center;
+      opacity: 0;
+      animation: fadeInUp 1s cubic-bezier(0.23, 1, 0.320, 1) 0.8s forwards;
     }
 
     .footer-brand {
@@ -465,6 +612,7 @@
       margin-bottom: 8px;
       font-weight: 400;
       letter-spacing: -0.5px;
+      text-shadow: 0 4px 12px rgba(201, 169, 110, 0.1);
     }
 
     .footer-tagline {
@@ -486,21 +634,37 @@
       margin-bottom: 80px;
     }
 
-    .footer-links a {
+    .footer-link {
       font-family: 'Cormorant Garamond', serif;
       font-size: 13px;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--text-dark);
       text-decoration: none;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
       font-weight: 400;
       opacity: 0.7;
+      position: relative;
     }
 
-    .footer-links a:hover {
+    .footer-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--rose-gold);
+      transition: width 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+    }
+
+    .footer-link:hover {
       opacity: 1;
-      color: var(--burgundy);
+      color: var(--rose-gold);
+    }
+
+    .footer-link:hover::after {
+      width: 100%;
     }
 
     .footer-bottom {
@@ -513,17 +677,16 @@
     }
 
     @media (max-width: 768px) {
-      .hero-intro {
-        padding: 60px 24px;
+      .navbar {
+        padding: 16px 20px;
       }
 
+      .hero-intro,
       .philosophy-section,
-      .dispatches-section {
-        padding: 0 24px;
-      }
-
+      .dispatches-section,
       .site-footer {
-        padding: 80px 24px 60px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
 
       .dispatches-grid {
@@ -537,18 +700,32 @@
 
       .footer-links {
         gap: 32px;
+        flex-direction: column;
+      }
+
+      .hero-intro {
+        padding-top: 120px;
       }
     }
   </style>
 </head>
 <body>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="navbar-brand">The Oltre Way</a>
+  <a href="uber-analytics.html" class="navbar-link">Analytics</a>
+</nav>
+
+<!-- READING PROGRESS BAR -->
+<div id="reading-progress"></div>
+
 <!-- HERO SECTION -->
 <section class="hero-intro">
   <div class="hero-content">
     <div class="hero-eyebrow">Luxury Travel Dispatches</div>
     <h1 class="hero-title">The Oltre Way</h1>
-    <p class="hero-subtitle">Where sophisticated taste meets strategic investment. Curated travel stories from around the world.</p>
+    <p class="hero-subtitle">Where sophisticated taste meets strategic investment. Immersive journeys through luxury, discovery, and intentional travel.</p>
     <a href="#dispatches" class="hero-cta">Explore Dispatches</a>
 
     <div class="scroll-indicator">
@@ -567,9 +744,9 @@
       <div class="philosophy-quote">Someday the income catches up to the taste. For now, the strategy is the point.</div>
     </div>
     <div class="philosophy-text">
-      <p><strong>The Oltre Way</strong> is a philosophy of intentional travel. It's about understanding that the best experiences aren't purchased—they're discovered. They emerge from curiosity, taste, and the willingness to see beyond the obvious.</p>
-      <p>We believe luxury isn't about spending the most. It's about knowing where every dollar goes. Strategic investment in travel means recognizing which experiences demand premium positioning and which are better accessed through insight and intention.</p>
-      <p>These are our dispatches from the road. Stories of discovery, strategy, and the particular joy of finding transcendent moments in unexpected places.</p>
+      <p><strong>The Oltre Way</strong> is a philosophy of intentional travel. It's about understanding that the best experiences aren't purchased—they're discovered through insight, taste, and the willingness to move beyond the obvious.</p>
+      <p>Luxury isn't about spending the most. It's about knowing where every dollar goes. Strategic investment in travel means recognizing which experiences demand premium positioning and which are better accessed through intention and strategy.</p>
+      <p>These dispatches are our stories from the road. Tales of discovery, strategy, and the particular joy of finding transcendent moments in unexpected places around the world.</p>
     </div>
   </div>
 </section>
@@ -580,6 +757,7 @@
     <div class="dispatches-eyebrow">Our Stories</div>
     <h2 class="dispatches-title">Travel Dispatches</h2>
     <p class="dispatches-subtitle">Curated experiences from luxury destinations worldwide</p>
+    <div class="section-divider"></div>
   </div>
 
   <div class="dispatches-grid">
@@ -591,7 +769,7 @@
         <div class="dispatch-card-category">Alpine</div>
         <h3 class="dispatch-card-title">Banff & Lake Louise</h3>
         <div class="dispatch-card-location">Alberta, Canada</div>
-        <p class="dispatch-card-teaser">Record snow, the Post Hotel strategy, and why the mountains reveal themselves to those who understand timing.</p>
+        <p class="dispatch-card-teaser">Record snow, the Post Hotel strategy, and why mountains reveal themselves to those who understand timing.</p>
         <span class="dispatch-card-arrow">Read Story →</span>
       </div>
     </a>
@@ -643,7 +821,7 @@
         <div class="dispatch-card-category">Nightlife</div>
         <h3 class="dispatch-card-title">Tam Tam to Sunrise</h3>
         <div class="dispatch-card-location">Miami, Florida</div>
-        <p class="dispatch-card-teaser">Club Space, grilled cheese at 4 AM, cotton candy clouds at dawn. Miami reveals itself after midnight.</p>
+        <p class="dispatch-card-teaser">Club Space, grilled cheese at 4 AM, cotton candy clouds at dawn. Miami after midnight.</p>
         <span class="dispatch-card-arrow">Read Story →</span>
       </div>
     </a>
@@ -656,7 +834,7 @@
         <div class="dispatch-card-category">Recovery</div>
         <h3 class="dispatch-card-title">The Andaz Epilogue</h3>
         <div class="dispatch-card-location">Miami, Florida</div>
-        <p class="dispatch-card-teaser">A missed flight becomes strategy. How points and intention transform chaos into the trip's best moments.</p>
+        <p class="dispatch-card-teaser">A missed flight becomes strategy. How points and intention transform chaos into triumph.</p>
         <span class="dispatch-card-arrow">Read Story →</span>
       </div>
     </a>
@@ -668,15 +846,18 @@
   <div class="footer-brand">The Oltre Way</div>
   <div class="footer-tagline">Where taste meets strategy</div>
   <div class="footer-links">
-    <a href="#philosophy">Our Philosophy</a>
-    <a href="#dispatches">Stories</a>
-    <a href="uber-analytics.html">Analytics</a>
+    <a href="#philosophy" class="footer-link">Philosophy</a>
+    <a href="#dispatches" class="footer-link">Stories</a>
+    <a href="uber-analytics.html" class="footer-link">Analytics</a>
   </div>
   <div class="footer-bottom">© 2026 The Oltre Way. All rights reserved.</div>
 </footer>
 
+<!-- IMMERSIVE SCROLL & INTERACTION SYSTEM -->
+<script src="immersive-scroll.js"></script>
+
 <script>
-  // Smooth scroll for anchors
+  // Smooth anchor scroll
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -686,33 +867,6 @@
       }
     });
   });
-
-  // Intersection Observer for scroll animations
-  function setupScrollAnimations() {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -80px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.dispatch-card').forEach(card => {
-      observer.observe(card);
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupScrollAnimations);
-  } else {
-    setupScrollAnimations();
-  }
 </script>
 
 </body>
