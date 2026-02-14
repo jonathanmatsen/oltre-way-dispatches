@@ -1,0 +1,561 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		36934482DFBD9E5B277EAB21 /* TheOltreWayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF79E77CC5980479CC83918 /* TheOltreWayApp.swift */; };
+		D90AD4E93E97C2C09202C562 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0BC4CC96469E3238068F6F8 /* SampleData.swift */; };
+		55E1644243C1B2BB9CEA4393 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922AA0D30DF431B22DB18EAB /* Article.swift */; };
+		C3F49A57408DB329D5801F93 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35BBF1790FAE60B2776057F3 /* Collection.swift */; };
+		9365079AD84F85F0F264E7CC /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950E7CB9101DA4E1A038C0EC /* Destination.swift */; };
+		E99D371B77431CFC65E0504C /* ContentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25EF1AFE5294535C5A4B9483 /* ContentService.swift */; };
+		3F4AF4976741E3F210629A80 /* OltreColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763FC2792545FA4D1F1444C4 /* OltreColors.swift */; };
+		D79E5E97E6A4D02FFB4AC4DE /* OltreFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184C86CA6983FF2C8DA15B2B /* OltreFonts.swift */; };
+		F57D049D18358E523EA259D1 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F77706F20DCC55BBB3500D /* ArticleViewModel.swift */; };
+		2B2F7A6E005513645731A4EE /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BED9AA2123D82DD19854C /* AuthViewModel.swift */; };
+		9002FB725196C36298B3DBE8 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C26A425DE7CF1FA6678B3A /* SavedViewModel.swift */; };
+		4243C681C97B3793D044C322 /* ArticleMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A91DCE655ABA9857AD8194D /* ArticleMapView.swift */; };
+		3D35591642615F9450BECB7E /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF400C2A583C3A3BA6FEF90B /* ArticleView.swift */; };
+		FEEBAB3A3405477EA48694B7 /* GlobeTransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A82084F1ED53494E918DC6 /* GlobeTransitionView.swift */; };
+		3C5A41AF09B000F3D6104E96 /* PracticalInfoBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E34E858F6D13E4829BFBCE /* PracticalInfoBoxView.swift */; };
+		235C1AEBDD9DAB183C71ABC1 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401400795BF7DC5E8208A3B4 /* ExploreView.swift */; };
+		36909B8602AF65198106FCA6 /* ArticleCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FAB866BA07D0118739EEC9 /* ArticleCardView.swift */; };
+		9B0029B585748D2996AA2C34 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A580477B1545804FFF65E6E /* HomeView.swift */; };
+		52B57446BEC1218206559F5E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC42A10FF005A14D26DC156 /* MainTabView.swift */; };
+		B9D944AE0914FDA917312696 /* HamburgerMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34022E48A6F05BC650703E7D /* HamburgerMenuView.swift */; };
+		C05A734032676A90F22B9A2E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AADF1660624594530CB0F63E /* ProfileView.swift */; };
+		52C702C7403717CC811042D9 /* CollectionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308A0079DE55B10938F7CF48 /* CollectionDetailView.swift */; };
+		C2FC8615F9CBE535B3392A37 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3413F43ACDC2F1FD3B848 /* SavedView.swift */; };
+		678E36F64AEE56792F2B2946 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B430983B2A534EDCD8DC19F /* SplashView.swift */; };
+		C4FAD7030A21BFAE7DB98D4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4437A2510EDC4C4D3A99C7F /* Assets.xcassets */; };
+		FED17C38F44437F5CB2E352A /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4758C2E33A24AF1A8F44F839 /* MapKit.framework */; };
+		BA63846192DA3CB164F38311 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D8838B441608974802264DF /* AuthenticationServices.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0AF79E77CC5980479CC83918 /* TheOltreWayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TheOltreWayApp.swift"; sourceTree = "<group>"; };
+		B0BC4CC96469E3238068F6F8 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SampleData.swift"; sourceTree = "<group>"; };
+		922AA0D30DF431B22DB18EAB /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Article.swift"; sourceTree = "<group>"; };
+		35BBF1790FAE60B2776057F3 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection.swift"; sourceTree = "<group>"; };
+		950E7CB9101DA4E1A038C0EC /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Destination.swift"; sourceTree = "<group>"; };
+		25EF1AFE5294535C5A4B9483 /* ContentService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentService.swift"; sourceTree = "<group>"; };
+		763FC2792545FA4D1F1444C4 /* OltreColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OltreColors.swift"; sourceTree = "<group>"; };
+		184C86CA6983FF2C8DA15B2B /* OltreFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OltreFonts.swift"; sourceTree = "<group>"; };
+		90F77706F20DCC55BBB3500D /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleViewModel.swift"; sourceTree = "<group>"; };
+		442BED9AA2123D82DD19854C /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AuthViewModel.swift"; sourceTree = "<group>"; };
+		E7C26A425DE7CF1FA6678B3A /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedViewModel.swift"; sourceTree = "<group>"; };
+		9A91DCE655ABA9857AD8194D /* ArticleMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleMapView.swift"; sourceTree = "<group>"; };
+		FF400C2A583C3A3BA6FEF90B /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleView.swift"; sourceTree = "<group>"; };
+		C1A82084F1ED53494E918DC6 /* GlobeTransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GlobeTransitionView.swift"; sourceTree = "<group>"; };
+		33E34E858F6D13E4829BFBCE /* PracticalInfoBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PracticalInfoBoxView.swift"; sourceTree = "<group>"; };
+		401400795BF7DC5E8208A3B4 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreView.swift"; sourceTree = "<group>"; };
+		C1FAB866BA07D0118739EEC9 /* ArticleCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArticleCardView.swift"; sourceTree = "<group>"; };
+		0A580477B1545804FFF65E6E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeView.swift"; sourceTree = "<group>"; };
+		FCC42A10FF005A14D26DC156 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainTabView.swift"; sourceTree = "<group>"; };
+		34022E48A6F05BC650703E7D /* HamburgerMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HamburgerMenuView.swift"; sourceTree = "<group>"; };
+		AADF1660624594530CB0F63E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileView.swift"; sourceTree = "<group>"; };
+		308A0079DE55B10938F7CF48 /* CollectionDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionDetailView.swift"; sourceTree = "<group>"; };
+		AEB3413F43ACDC2F1FD3B848 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SavedView.swift"; sourceTree = "<group>"; };
+		3B430983B2A534EDCD8DC19F /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashView.swift"; sourceTree = "<group>"; };
+		B4437A2510EDC4C4D3A99C7F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2BF4909C0974675529DA1020 /* The Oltre Way.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Oltre Way.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4758C2E33A24AF1A8F44F839 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "MapKit.framework"; path = "System/Library/Frameworks/MapKit.framework"; sourceTree = SDKROOT; };
+		3D8838B441608974802264DF /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AuthenticationServices.framework"; path = "System/Library/Frameworks/AuthenticationServices.framework"; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		D383EE1AD522B1F2BD8C0CD0 = {
+			isa = PBXGroup;
+			children = (
+				10E70BD54AD792470FA52874 /* TheOltreWay */,
+				EDB4395E6D2B0BA4390C44B2 /* Frameworks */,
+				702678DD18B334FD1A94E529 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		702678DD18B334FD1A94E529 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2BF4909C0974675529DA1020 /* The Oltre Way.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EDB4395E6D2B0BA4390C44B2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4758C2E33A24AF1A8F44F839 /* MapKit.framework */,
+				3D8838B441608974802264DF /* AuthenticationServices.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		10E70BD54AD792470FA52874 /* TheOltreWay */ = {
+			isa = PBXGroup;
+			children = (
+				0AF79E77CC5980479CC83918 /* TheOltreWayApp.swift */,
+				B4437A2510EDC4C4D3A99C7F /* Assets.xcassets */,
+				CC5A467A6EC0BAA055E5E3AB /* Data */,
+				1D61271C455BCD4A33238E8A /* Models */,
+				21972F26D163C9F4965CF43A /* Services */,
+				01B6FE32849EA740CDF59632 /* Theme */,
+				466BA4503B13B6ABBC4C9253 /* ViewModels */,
+				C0FA2009A698EDE677147C92 /* Views */,
+			);
+			path = TheOltreWay;
+			sourceTree = "<group>";
+		};
+		CC5A467A6EC0BAA055E5E3AB /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				B0BC4CC96469E3238068F6F8 /* SampleData.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1D61271C455BCD4A33238E8A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				922AA0D30DF431B22DB18EAB /* Article.swift */,
+				35BBF1790FAE60B2776057F3 /* Collection.swift */,
+				950E7CB9101DA4E1A038C0EC /* Destination.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		21972F26D163C9F4965CF43A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				25EF1AFE5294535C5A4B9483 /* ContentService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		01B6FE32849EA740CDF59632 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				763FC2792545FA4D1F1444C4 /* OltreColors.swift */,
+				184C86CA6983FF2C8DA15B2B /* OltreFonts.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		466BA4503B13B6ABBC4C9253 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				90F77706F20DCC55BBB3500D /* ArticleViewModel.swift */,
+				442BED9AA2123D82DD19854C /* AuthViewModel.swift */,
+				E7C26A425DE7CF1FA6678B3A /* SavedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		C0FA2009A698EDE677147C92 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC03C5748AB2AE25E1BAD1CC /* Article */,
+				083D923D139799F5BA14CA79 /* Components */,
+				950EE274CE717332645A76DD /* Explore */,
+				F9D2E89BA7D1A67DA02B606F /* Home */,
+				FCB127A58D036A85102D2EBE /* Menu */,
+				B187EA4D3078F5DC508C70D3 /* Profile */,
+				D9126D4877D191FB4ED63132 /* Saved */,
+				3C70E75AD34B8EEBE042F0A2 /* Splash */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC03C5748AB2AE25E1BAD1CC /* Article */ = {
+			isa = PBXGroup;
+			children = (
+				9A91DCE655ABA9857AD8194D /* ArticleMapView.swift */,
+				FF400C2A583C3A3BA6FEF90B /* ArticleView.swift */,
+				C1A82084F1ED53494E918DC6 /* GlobeTransitionView.swift */,
+				33E34E858F6D13E4829BFBCE /* PracticalInfoBoxView.swift */,
+			);
+			path = Article;
+			sourceTree = "<group>";
+		};
+		083D923D139799F5BA14CA79 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		950EE274CE717332645A76DD /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				401400795BF7DC5E8208A3B4 /* ExploreView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		F9D2E89BA7D1A67DA02B606F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C1FAB866BA07D0118739EEC9 /* ArticleCardView.swift */,
+				0A580477B1545804FFF65E6E /* HomeView.swift */,
+				FCC42A10FF005A14D26DC156 /* MainTabView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		FCB127A58D036A85102D2EBE /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				34022E48A6F05BC650703E7D /* HamburgerMenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		B187EA4D3078F5DC508C70D3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AADF1660624594530CB0F63E /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D9126D4877D191FB4ED63132 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				308A0079DE55B10938F7CF48 /* CollectionDetailView.swift */,
+				AEB3413F43ACDC2F1FD3B848 /* SavedView.swift */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		3C70E75AD34B8EEBE042F0A2 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				3B430983B2A534EDCD8DC19F /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		241BABDC584FE49215DDBF87 /* TheOltreWay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D108955BF91611946EB6CE9E /* Build configuration list for PBXNativeTarget "TheOltreWay" */;
+			buildPhases = (
+				27DDE3BF76FCD28B6FCC92C1 /* Sources */,
+				4159BA4D74DB79CDA08D648E /* Frameworks */,
+				FBCBD2485F2FA9EC9755DD94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TheOltreWay;
+			productName = TheOltreWay;
+			productReference = 2BF4909C0974675529DA1020 /* The Oltre Way.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84D8EBBEB8D723174F2B983E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					241BABDC584FE49215DDBF87 = {
+						CreatedOnToolsVersion = 15.0;
+						SystemCapabilities = {
+							com.apple.SignInWithApple = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 1197E0E38363DB2879D8768D /* Build configuration list for PBXProject "TheOltreWay" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D383EE1AD522B1F2BD8C0CD0;
+			productRefGroup = 702678DD18B334FD1A94E529 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				241BABDC584FE49215DDBF87 /* TheOltreWay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		27DDE3BF76FCD28B6FCC92C1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				36934482DFBD9E5B277EAB21 /* TheOltreWayApp.swift in Sources */,
+				D90AD4E93E97C2C09202C562 /* SampleData.swift in Sources */,
+				55E1644243C1B2BB9CEA4393 /* Article.swift in Sources */,
+				C3F49A57408DB329D5801F93 /* Collection.swift in Sources */,
+				9365079AD84F85F0F264E7CC /* Destination.swift in Sources */,
+				E99D371B77431CFC65E0504C /* ContentService.swift in Sources */,
+				3F4AF4976741E3F210629A80 /* OltreColors.swift in Sources */,
+				D79E5E97E6A4D02FFB4AC4DE /* OltreFonts.swift in Sources */,
+				F57D049D18358E523EA259D1 /* ArticleViewModel.swift in Sources */,
+				2B2F7A6E005513645731A4EE /* AuthViewModel.swift in Sources */,
+				9002FB725196C36298B3DBE8 /* SavedViewModel.swift in Sources */,
+				4243C681C97B3793D044C322 /* ArticleMapView.swift in Sources */,
+				3D35591642615F9450BECB7E /* ArticleView.swift in Sources */,
+				FEEBAB3A3405477EA48694B7 /* GlobeTransitionView.swift in Sources */,
+				3C5A41AF09B000F3D6104E96 /* PracticalInfoBoxView.swift in Sources */,
+				235C1AEBDD9DAB183C71ABC1 /* ExploreView.swift in Sources */,
+				36909B8602AF65198106FCA6 /* ArticleCardView.swift in Sources */,
+				9B0029B585748D2996AA2C34 /* HomeView.swift in Sources */,
+				52B57446BEC1218206559F5E /* MainTabView.swift in Sources */,
+				B9D944AE0914FDA917312696 /* HamburgerMenuView.swift in Sources */,
+				C05A734032676A90F22B9A2E /* ProfileView.swift in Sources */,
+				52C702C7403717CC811042D9 /* CollectionDetailView.swift in Sources */,
+				C2FC8615F9CBE535B3392A37 /* SavedView.swift in Sources */,
+				678E36F64AEE56792F2B2946 /* SplashView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FBCBD2485F2FA9EC9755DD94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4FAD7030A21BFAE7DB98D4E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4159BA4D74DB79CDA08D648E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FED17C38F44437F5CB2E352A /* MapKit.framework in Frameworks */,
+				BA63846192DA3CB164F38311 /* AuthenticationServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		D454B641EBA9EC442E92F8C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASCTOOL_MARK_AS_BUILD_PHASE_DEPENDENCY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A0813689B54F3E341AD158FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASCTOOL_MARK_AS_BUILD_PHASE_DEPENDENCY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6FEB34CFCF3EEC49D88633F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TheOltreWay/TheOltreWay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theoltreway.app;
+				PRODUCT_NAME = "The Oltre Way";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		29885A23B925C73897CDB9CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TheOltreWay/TheOltreWay.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.theoltreway.app;
+				PRODUCT_NAME = "The Oltre Way";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1197E0E38363DB2879D8768D /* Build configuration list for PBXProject "TheOltreWay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D454B641EBA9EC442E92F8C5 /* Debug */,
+				A0813689B54F3E341AD158FD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D108955BF91611946EB6CE9E /* Build configuration list for PBXNativeTarget "TheOltreWay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6FEB34CFCF3EEC49D88633F3 /* Debug */,
+				29885A23B925C73897CDB9CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+	};
+	rootObject = 84D8EBBEB8D723174F2B983E /* Project object */;
+}
