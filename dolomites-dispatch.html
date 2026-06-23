@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Oltre Way — Go Further Than the Circuit</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Source+Serif+4:ital,wght@0,200;0,300;0,400;1,300;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  :root {
+    --burgundy: #6B2737;
+    --deep-burgundy: #4A1A26;
+    --cream: #F5F0E8;
+    --warm-ivory: #FAF7F2;
+    --terracotta: #C4724E;
+    --navy: #1C2A3A;
+    --gold-accent: #C9A96E;
+    --text-dark: #2A2118;
+    --text-muted: #6B5E52;
+    --divider: #D4C9BC;
+    --alpine: #3A5870;
+    --slate: #4A5A6C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--warm-ivory);
+    color: var(--text-dark);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    line-height: 1.85;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- SITE HEADER --- */
+  .site-header {
+    text-align: center;
+    padding: 28px 20px 24px;
+    border-bottom: 1px solid var(--divider);
+    background: var(--warm-ivory);
+    position: relative;
+  }
+  .site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 50%;
+    transform: translateX(-50%);
+    width: 40px; height: 1px;
+    background: var(--burgundy);
+  }
+  .site-header .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--burgundy); font-weight: 600;
+    text-decoration: none;
+  }
+  .site-header .brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px; font-weight: 300;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    position: relative;
+    min-height: 78vh;
+    display: flex; align-items: flex-end; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(180deg, rgba(28,42,58,0) 0%, rgba(28,42,58,0.25) 45%, rgba(28,42,58,0.82) 100%),
+      url('images/1_hero-title.jpeg');
+    background-size: cover;
+    background-position: center 40%;
+  }
+  .hero-content {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 60px 24px 54px;
+    max-width: 760px;
+  }
+  .hero-content .article-category {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.78);
+    margin-bottom: 20px; font-weight: 400;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5.5vw, 52px);
+    font-weight: 400; color: #fff;
+    line-height: 1.15; margin-bottom: 18px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold-accent); }
+  .hero-subtitle {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(14px, 2.2vw, 17px);
+    color: rgba(255,255,255,0.85);
+    font-weight: 300; font-style: italic;
+    line-height: 1.7; max-width: 560px; margin: 0 auto;
+  }
+  .hero-caption {
+    position: absolute; bottom: 10px; right: 16px; z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 1px;
+    color: rgba(255,255,255,0.6); font-style: italic;
+  }
+
+  /* --- ARTICLE --- */
+  .article-container {
+    max-width: 720px; margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 40px);
+  }
+  .article-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 24px 0; border-bottom: 1px solid var(--divider);
+    margin-bottom: 40px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .article-body p {
+    font-size: clamp(16px, 2.5vw, 17.5px);
+    margin-bottom: 1.5em; font-weight: 300;
+  }
+  .article-body p.drop::first-letter {
+    font-family: 'Playfair Display', serif;
+    float: left; font-size: 3.8em; line-height: 0.8;
+    padding-right: 10px; padding-top: 6px;
+    color: var(--burgundy); font-weight: 400;
+  }
+
+  /* --- SECTION TITLES --- */
+  .beat { margin: 8px 0; }
+  .beat-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--terracotta); text-align: center; margin-bottom: 10px;
+  }
+  .beat-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 32px); font-weight: 400;
+    color: var(--text-dark); text-align: center;
+    line-height: 1.2; margin-bottom: 32px;
+  }
+  .sub-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(19px, 3vw, 23px); font-weight: 400; font-style: italic;
+    color: var(--burgundy); margin: 8px 0 20px;
+  }
+  .section-break {
+    text-align: center; padding: 30px 0;
+    color: var(--divider); letter-spacing: 12px; font-size: 10px;
+  }
+  .pull-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3vw, 22px); font-style: italic;
+    color: var(--burgundy); text-align: center;
+    padding: 32px 20px; margin: 32px 0;
+    border-top: 1px solid var(--divider); border-bottom: 1px solid var(--divider);
+    line-height: 1.6;
+  }
+
+  /* --- FIGURES (one contained width for every photo) --- */
+  figure.photo, figure.feature {
+    width: min(760px, 92vw);
+    margin: 40px auto;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  figure.photo img, figure.feature img {
+    width: 100%; height: auto; display: block;
+    background: var(--cream);
+  }
+  figure.photo figcaption, figure.feature figcaption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 0.5px; font-style: italic;
+    color: var(--text-muted); text-align: center; margin-top: 10px;
+  }
+  /* portrait renders at the same frame width as every other photo */
+  figure.portrait img { width: 100%; height: auto; }
+
+  /* --- TABLES --- */
+  .table-wrap { margin: 36px 0; overflow-x: auto; }
+  table.oltre {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Source Serif 4', serif; font-size: 14.5px; font-weight: 300;
+  }
+  table.oltre caption {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 16px; text-align: left;
+  }
+  table.oltre th {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 600;
+    text-align: left; padding: 10px 14px 10px 0;
+    border-bottom: 1.5px solid var(--alpine);
+  }
+  table.oltre td {
+    padding: 13px 14px 13px 0; vertical-align: top;
+    border-bottom: 1px solid var(--divider); line-height: 1.6;
+  }
+  table.oltre td:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600; letter-spacing: 0.5px; color: var(--alpine);
+    white-space: nowrap; padding-right: 22px;
+  }
+  table.oltre.glance td:first-child { color: var(--burgundy); }
+
+  /* --- LOGISTICS / PRACTICAL --- */
+  .logistics { background: var(--cream); padding: 48px 0; margin: 48px 0; }
+  .logistics .article-container { max-width: 720px; }
+  .logistics p { font-size: 15.5px; margin-bottom: 1.3em; color: var(--text-dark); }
+  .logistics .lede {
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    letter-spacing: 1px; text-transform: uppercase; font-size: 12px;
+    color: var(--alpine); margin: 26px 0 8px; display: block;
+  }
+
+  /* --- BOTTOM LINE --- */
+  .ledger { margin: 30px 0; }
+  .ledger h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--terracotta); margin-bottom: 12px; font-weight: 600;
+  }
+  .ledger p { font-size: 15.5px; margin-bottom: 1em; }
+  .ledger .unexpected {
+    font-style: italic; border-left: 3px solid var(--gold-accent);
+    padding-left: 20px; color: var(--text-dark);
+  }
+
+  /* --- MAP --- */
+  .map-section { margin: 48px auto; }
+  #route-map {
+    width: 100%; height: 420px;
+    border: 1px solid var(--divider);
+  }
+  .map-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12px; font-style: italic; color: var(--text-muted);
+    text-align: center; margin-top: 10px; letter-spacing: 0.5px;
+  }
+  .leaflet-popup-content {
+    font-family: 'Source Serif 4', serif; font-size: 13px; line-height: 1.5;
+  }
+  .leaflet-popup-content strong {
+    font-family: 'Cormorant Garamond', serif; letter-spacing: 1px;
+    text-transform: uppercase; font-size: 12px; color: var(--burgundy);
+  }
+
+  /* --- FOOTER --- */
+  .article-footer {
+    max-width: 640px; margin: 56px auto 64px;
+    padding: 36px clamp(24px,5vw,40px) 0;
+    border-top: 1px solid var(--divider); text-align: center;
+  }
+  .article-footer .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--burgundy); margin-bottom: 12px; display: block; font-weight: 600;
+  }
+  .article-footer p { font-size: 13.5px; color: var(--text-muted); font-style: italic; }
+  .series-nav { margin-top: 22px; }
+  .series-nav a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--burgundy); text-decoration: none;
+  }
+  .series-nav a:hover { color: var(--terracotta); }
+
+  @media (max-width: 600px) {
+    figure.photo, figure.feature, figure.portrait { width: 92vw; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand-name" href="index.html">The Oltre Way</a>
+  <div class="brand-tagline">Sotto Voce Luxury</div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="article-category">Dispatches • The Dolomites</div>
+    <h1 class="hero-title">Go Further <em>Than the Circuit</em></h1>
+    <p class="hero-subtitle">Six days skiing the Dolomites: a glacier summit, a fifteenth-century chapel reached by gondola, a horse-drawn tow across a frozen valley, and everything the Sellaronda leaves behind.</p>
+  </div>
+  <div class="hero-caption">Fifteenth-century chapel, La Crusc, Badia</div>
+</section>
+
+<article class="article-container">
+  <div class="article-meta">
+    <span>The Dolomites, Italy</span>
+    <span>March 12–19, 2024</span>
+  </div>
+
+  <!-- FRAME -->
+  <div class="article-body">
+    <p class="drop">Everyone skis the Sellaronda. We did that on day one. That left us five more days.</p>
+    <p>Cinque Torri, threading past WWI trenches on piste. Spaghetti at 2,407 meters. Marmolada, the last skiable glacier in the Dolomites. A horse-drawn tow across the valley floor for five euros. Soft-boiled eggs before first chair, unprompted. Hugo spritzes at Club Moritzino après. A lift-served fifteenth-century chapel found through our chalet hostess's subtle suggestion. A wellness refuge on a campground. A last-minute detour to the hometown of our great-grandparents. This is what going further than the circuit gets you.</p>
+  </div>
+
+  <!-- AT A GLANCE -->
+  <div class="table-wrap">
+    <table class="oltre glance">
+      <caption>At a Glance</caption>
+      <thead><tr><th>Verdict</th><th>Place</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Overrated</td><td>Cortina</td><td>If you've been to a luxury European mountain town, you've essentially been to Cortina.</td></tr>
+        <tr><td>Underrated</td><td>Natura Wellness Centre</td><td>On a campground in Alta Badia. Thirty euros. Dry and wet saunas, a relaxation room, hot tea after six hours on skis.</td></tr>
+        <tr><td>Surprised Us</td><td>Marmolada</td><td>Three cable cars to a summit where birds circle below you. Stephanie shakes the platform railing while Jonathan reconsiders his life choices. The only powder run of the trip waits on the way down.</td></tr>
+        <tr><td>The Find</td><td>La Crusc</td><td>Our host paused over her map, then pointed. A muddy lot, one gondola, a hike through trees that parted onto a white chapel alone against raw rock. We ordered paninis from a wooden hut and stayed until we ran out of reasons to leave.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</article>
+
+<!-- ROUTE MAP -->
+<article class="article-container map-section">
+  <div class="beat-eyebrow">The Route</div>
+  <div id="route-map"></div>
+  <div class="map-note">Venice to Corvara, the high routes, and the turn south to Padova.</div>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- CORVARA -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Corvara</h2>
+  </div>
+  <div class="article-body">
+    <p>Skis in tow, we grabbed a rental car from Marco Polo International and made an impromptu stop in Treviso (the better version of Venice, and the radicchio capital of Italy) before heading north. Flat ground gave way to verticals.</p>
+    <p>For too long into the drive we weren't sure we'd find snow. The lower resorts were dirt and rock, mid-March taking its toll. As the road climbed and kept climbing, snow slowly appeared on the shoulders, then the tree line, then everywhere. We crested the pass, and Corvara in Badia revealed itself in the valley below, twinkling at dusk.</p>
+  </div>
+
+  <figure class="photo feature">
+    <img src="images/2_corvara-dusk.jpeg" alt="Corvara in Badia at dusk" loading="lazy">
+    <figcaption>Corvara in Badia at dusk</figcaption>
+  </figure>
+
+  <div class="article-body">
+    <p>Jetlagged and past the point of speaking to each other, we checked into La Cianò, a quaint Italian alpine lodge. Our gracious Ladin host met us at the door. The Ladins are native to these valleys, an Alpine people whose language was here centuries before Italian.</p>
+    <p>We did everything in our power not to fall asleep standing up, found the only open restaurant, a pizzeria down the road, ate in silence, and passed out.</p>
+    <p>The next morning, we fell into the breakfast ritual. Cappuccinos in a small nook. Soft-boiled eggs, unprompted by day two.</p>
+  </div>
+
+  <h3 class="sub-title">The Sellaronda</h3>
+  <div class="article-body">
+    <p>Since this was our first time in the area, there was only one way to begin: the Sellaronda. We clicked into our bindings at the Alta Badia base, a two-minute bus ride from La Cianò, loaded into the iconic yellow Boe gondola cabin, and set off on the six-hour orange route to get oriented.</p>
+  </div>
+
+  <figure class="photo">
+    <img src="images/3_boe-gondola.jpeg" alt="Boe gondola with Corvara in the background" loading="lazy">
+    <figcaption>Boe gondola with Corvara in the background</figcaption>
+  </figure>
+
+  <div class="article-body">
+    <p>The circuit took us through four valleys: Alta Badia, Arabba, Val di Fassa, and Val Gardena. We paused in each one for a spritz, the views demanding it.</p>
+    <p>If you're a steep-and-deep skier, set your expectations. Scenery takes center stage here. Most runs skew toward the mellow side.</p>
+  </div>
+
+  <figure class="photo"><img src="images/4_arabba.jpeg" alt="Arabba" loading="lazy"><figcaption>Arabba</figcaption></figure>
+  <figure class="photo"><img src="images/5_val-di-fassa.jpeg" alt="Halfway around the orange route, Val di Fassa" loading="lazy"><figcaption>Halfway around the orange route, Val di Fassa</figcaption></figure>
+  <figure class="photo"><img src="images/6_sassolungo-to-passo-sella.jpeg" alt="Sassolungo, on the descent to Passo Sella" loading="lazy"><figcaption>Sassolungo, on the descent to Passo Sella</figcaption></figure>
+
+  <div class="article-body">
+    <p>When music started drifting off the patio of yet another rifugio, we knew where to go.</p>
+  </div>
+
+  <figure class="photo"><img src="images/7_passo-sella-lounge.jpeg" alt="Passo Sella Lounge" loading="lazy"><figcaption>Passo Sella Lounge</figcaption></figure>
+
+  <div class="article-body">
+    <p>We took one last break on a patio, taking in the giant slab of mountain in front of us. There's something about that kind of scale that quiets everything down. As we looped back through Selva di Gardena, the sun dipping behind it, we were rewarded with the first day in the books and a lay of the land.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/8_toward-corvara-day-one.jpeg" alt="Toward Corvara, end of day one" loading="lazy"><figcaption>Toward Corvara, end of day one</figcaption></figure>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- MARMOLADA -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Marmolada</h2>
+  </div>
+  <div class="article-body">
+    <p>One day in and the Dolomites had us. We rejoined the Sellaronda before peeling off at Arabba.</p>
+  </div>
+
+  <figure class="photo"><img src="images/9_arabba-towards-marmolada.jpeg" alt="Arabba, towards Marmolada" loading="lazy"><figcaption>Arabba, towards Marmolada</figcaption></figure>
+
+  <div class="article-body">
+    <p>It's a bit of a trek to Marmolada from Corvara, and at about the halfway mark, hunger set in. Enter Rifugio Padon.</p>
+  </div>
+
+  <figure class="photo"><img src="images/10_rifugio-padon.jpeg" alt="Rifugio Padon, where the Sellaronda and Marmolada part ways" loading="lazy"><figcaption>Rifugio Padon, where the Sellaronda and Marmolada part ways</figcaption></figure>
+
+  <div class="article-body">
+    <p>Panoramic views at 2,407 meters paired with a bluebird day pulled us to the patio. Spaghetti, we learned, is a superior ski food: warm, saucy carbs that kept us full for most of the day.</p>
+    <p>Rifugio Padon is also a decision point. The Sellaronda continues in one direction. Marmolada is in the other. We chose Marmolada. Fewer people. The promise of powder in mid-March.</p>
+    <p>We descended to Malga Ciapela and joined the line, the snow turning slushier as we dropped toward the Marmolada base. Then three cable cars to the summit, each one steeper and more exposed than the last. We've taken trams at Snowbird and Jackson Hole, but this was a different planet. By the third cable car the ground beneath us had dropped away entirely.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/11_marmolada-tram.jpeg" alt="Marmolada incoming" loading="lazy"><figcaption>Marmolada incoming</figcaption></figure>
+
+  <div class="article-body">
+    <p>An elevator at the top deposited us onto a viewing platform where the first thing we registered was altitude.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/12_marmolada-platform.jpeg" alt="The Dolomites from the Marmolada platform" loading="lazy"><figcaption>The Dolomites from the Marmolada platform</figcaption></figure>
+
+  <div class="article-body">
+    <p>Alpine choughs circled below us. Not beside us. Below. Every peak in the Dolomites spread out in 360 degrees, crevices and ridgelines layered beneath us in every direction. Jonathan gripped the railing for a video. Stephanie shook it.</p>
+    <p>We took our time scanning the panorama as far left and as far right as it would go, then sat down with Aperol Spritzes from the bar one level below.</p>
+    <p>The ski down was a manageable red, wide enough to carve easily, with either side off piste providing the only real powder run of the trip.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/13_marmolada-run-down.jpeg" alt="The run down from Marmolada" loading="lazy"><figcaption>The run down from Marmolada</figcaption></figure>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- APRES AND AFTER DARK -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Après and After Dark</h2>
+  </div>
+
+  <h3 class="sub-title">Club Moritzino</h3>
+  <div class="article-body">
+    <p>The mountain hummed beneath our skis as we made our way to Club Moritzino. Hugo spritzes in hand, we spilled onto the patio and sank into canvas deck chairs in the snow.</p>
+  </div>
+
+  <figure class="photo portrait"><img src="images/14_moritzino-aperol.jpeg" alt="Stephanie, Club Moritzino" loading="lazy"><figcaption>Stephanie, Club Moritzino</figcaption></figure>
+
+  <div class="article-body">
+    <p>The DJ spun remixes that made us forget our legs were finished: sexy, propulsive, sans pretension. Helmets off, sunglasses on. The crowd was ski gear and stemware, everyone dancing or sprawled in chairs with the Dolomites behind them.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/15_club-moritzino.jpeg" alt="Club Moritzino" loading="lazy"><figcaption>Club Moritzino</figcaption></figure>
+
+  <div class="pull-quote">Dolce vita, sotto voce. When the runs started getting roped off, we took that as our cue to scurry down the mountain.</div>
+
+  <h3 class="sub-title">Cocun Cellar</h3>
+  <div class="article-body">
+    <p>Dinner was Cocun Cellar in San Cassiano, a restaurant built into the wine cellar of Ciasa Salares. <em>Cocun</em> is "cork" in Ladin, and the room earns the name: dark stone, 24,000 bottles, a place that makes you slow down before the first course lands.</p>
+  </div>
+
+  <figure class="photo"><img src="images/16_inside-cocun.jpeg" alt="Inside the cellar, Cocun, San Cassiano" loading="lazy"><figcaption>Inside the cellar, Cocun, San Cassiano</figcaption></figure>
+
+  <div class="article-body">
+    <p>We opted for the five-course tasting menu (98 euros per person) with the optional wine pairing (60 euros per person).</p>
+  </div>
+
+  <figure class="photo"><img src="images/17_dinner-at-cocun.jpeg" alt="Dinner at Cocun Cellar" loading="lazy"><figcaption>Dinner at Cocun Cellar</figcaption></figure>
+
+  <div class="article-body">
+    <p>Years later, it's still the dinner we reference when we reminisce about this trip.</p>
+  </div>
+
+  <h3 class="sub-title">L'Murin</h3>
+  <div class="article-body">
+    <p>L'Murin is not Club Moritzino. Loud EDM, a young crowd, an energy that pulled us straight back to our study-abroad twenties.</p>
+  </div>
+
+  <figure class="photo"><img src="images/18_l-murin.jpg" alt="L'Murin, later than we planned" loading="lazy"><figcaption>L'Murin, later than we planned</figcaption></figure>
+
+  <div class="article-body">
+    <p>This was not the sophisticated après of the mountain terraces. This was the part of the night where we stopped thinking about the next morning's first run and danced.</p>
+  </div>
+
+  <h3 class="sub-title">Natura Wellness Centre</h3>
+  <div class="article-body">
+    <p>Around day four of six, our legs were begging for a steam room, and La Cianò doesn't have one. Most hotel spas in the valley are guest-only, which left us searching.</p>
+    <p>We never thought we'd find the answer at a remote RV-focused resort. Unassuming on the outside, the interior of the Natura Wellness Centre exudes alpine sanctuary. Thirty euros grants access to dry and wet saunas and a relaxation room with complimentary tea and light refreshments, a seventeen-minute drive from La Cianò.</p>
+    <p>Keep in mind this is Europe, and the facilities are <em>au naturel</em> by default. Not strictly enforced.</p>
+  </div>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- LA CRUSC -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">La Crusc</h2>
+  </div>
+  <div class="article-body">
+    <p>We found La Crusc the old-fashioned way. Over breakfast, our Ladin host pulled out a paper map as big as the table and pointed.</p>
+    <p>After checking out of La Cianò, we drove to a muddy parking lot at the base of a single gondola. Mid-March had turned the ground soft. Our ski boots sloshed through it.</p>
+  </div>
+
+  <figure class="photo"><img src="images/19_la-crusc-gondola.jpeg" alt="The La Crusc gondola" loading="lazy"><figcaption>The La Crusc gondola</figcaption></figure>
+
+  <div class="article-body">
+    <p>After exiting the gondola, we ascended on a short hike through the trees. The clearing came without warning. A small white fifteenth-century chapel sat alone at the base of the Santa Croce massif, dwarfed by the rock face behind it. Humble and welcoming, with a dramatic backdrop.</p>
+    <p>Next to the church, a rifugio with a counter and a small menu. We ordered beers and paninis and carried them to a wooden picnic table in the sun.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/20_la-crusc-lunch.jpeg" alt="Lunch below the chapel, La Crusc" loading="lazy"><figcaption>Lunch below the chapel, La Crusc</figcaption></figure>
+
+  <div class="article-body">
+    <p>No crowds. No music. Just warmth and a view we hadn't earned through anything more than listening to the right person.</p>
+    <p>The pistes down were easy. We pointed the car toward Cortina.</p>
+  </div>
+
+  <h3 class="sub-title">Cortina</h3>
+  <div class="article-body">
+    <p>Cortina d'Ampezzo is beautiful and knows it. The main corso is lined with designer boutiques and the people look like they stepped out of a winter Vogue editorial. After four days in Corvara, a Ladin village small enough that our host knew our breakfast order by day two, Cortina felt like it had traded intimacy for polish. It's spread out in a way mountain towns shouldn't be, where we drove between stops instead of walking in ski boots. Worth seeing, but we were glad to have it as a base for Lagazuoi and Cinque Torri rather than the main event.</p>
+    <p>We checked into Hotel Menardi, a nineteenth-century hotel within walking distance of the center.</p>
+  </div>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- LAGAZUOI -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Lagazuoi</h2>
+  </div>
+  <div class="article-body">
+    <p>The cliff face from the base of Lagazuoi is sheer vertical rock, the top station visible the entire ride up in the cable car. Unlike Marmolada, where the summit kept hiding from us, here our eyes could grasp the altitude the whole way.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/21_lagazoui-looking-up.jpeg" alt="Looking up from the Lagazuoi base toward the Armentarola" loading="lazy"><figcaption>Looking up from the Lagazuoi base toward the Armentarola</figcaption></figure>
+
+  <div class="article-body">
+    <p>Campari sodas at the Lagazuoi Terrace Bar. Views of the peaks, including a fresh perspective on the Marmolada, before setting off on the Lagazuoi piste.</p>
+    <p>The second time up, we hiked to Rifugio Lagazuoi and switched to red wine, the cliff face now behind us, the valley spread below. Looking out over the Armentarola, the run we were about to drop into.</p>
+  </div>
+
+  <figure class="photo"><img src="images/22_red-wine-rifugio-lagazuoi.jpeg" alt="Red wine at Rifugio Lagazuoi" loading="lazy"><figcaption>Red wine at Rifugio Lagazuoi</figcaption></figure>
+
+  <div class="article-body">
+    <p>The Armentarola is eight kilometers of descent that moves between ridgelines. The run narrowed and widened but kept us within its corridor. It hugged more than confined. Gentle and scenic.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/23_armentarola-looking-down.jpg" alt="Armentarola" loading="lazy"><figcaption>Armentarola</figcaption></figure>
+
+  <div class="article-body">
+    <p>The snow held for most of it, carveable and forgiving, before the altitude dropped and everything turned heavy.</p>
+    <p>At the bottom waited La Ütia, a wood-heavy, unhurried rifugio. Rows of skis and poles signaled everyone else was thinking the same thing. A pause.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/24_looking-back-from-la-utia.jpeg" alt="Looking back at the first half of the Armentarola from La Ütia" loading="lazy"><figcaption>Looking back at the first half of the Armentarola from La Ütia</figcaption></figure>
+
+  <div class="article-body">
+    <p>We ordered a cheese plate of local mountain cuts with chutney and pickled peppers, spritzes, and espressos. The perfect assortment for relishing the beauty of the last run.</p>
+    <p>From La Ütia, the valley floor was flat, wet, and done. Getting back to the Alta Badia lifts meant either a taxi or horses. Multiple horses lined up with a single rope strung between handles on either side.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/25_armentarola-horse-tow.jpeg" alt="The horse tow across the valley floor, Armentarola" loading="lazy"><figcaption>The horse tow across the valley floor, Armentarola</figcaption></figure>
+
+  <div class="pull-quote">We grabbed on, poles in one hand, rope in the other, and were towed across 1.5 kilometers of valley floor on our skis. Five euros.</div>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- CINQUE TORRI -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Cinque Torri</h2>
+  </div>
+  <div class="article-body">
+    <p>Cinque Torri sits just below Lagazuoi: five rock towers rising above pistes that thread past actual WWI trenches. Jonathan went solo while Stephanie rested. He came back and immediately said we needed to return, that it couldn't be missed. The next morning we drove back so Stephanie could ski it.</p>
+  </div>
+
+  <figure class="photo feature"><img src="images/26_five-towers-cinqui-torri.jpeg" alt="The five towers of Cinque Torri" loading="lazy"><figcaption>The five towers of Cinque Torri</figcaption></figure>
+
+  <div class="article-body">
+    <p>It was worth it, though it feels strange to say so. There's something unresolved about carving turns through a battlefield, feeling the joy of the mountain and the weight of it at the same time. Unlike anything we've experienced before.</p>
+  </div>
+</article>
+
+<div class="section-break">• • •</div>
+
+<!-- PADOVA -->
+<article class="article-container">
+  <div class="beat">
+    <h2 class="beat-title">Padova</h2>
+  </div>
+  <div class="article-body">
+    <p>Not in the original plan. Over dinner, the question came up: where to go for the final night. Jonathan, eyes wide, said, "Wait, Padova?" Out of the way to the Venice airport. The question lingered for about thirty seconds. It was the only logical choice. The chance to see the city of our great-grandparents outweighed convenience. We're saving Padova for its own piece. It earns one.</p>
+  </div>
+</article>
+
+<!-- PRACTICAL CONSIDERATIONS -->
+<section class="logistics">
+  <article class="article-container">
+    <h2 class="beat-title">Practical Considerations</h2>
+
+    <span class="lede">Getting there</span>
+    <p>Fly into Venice Marco Polo and rent a car. Ours was a manual Lancia Ypsilon through Avis, US$220 for the week, which is all the car the passes require. Chains were provided, but if the forecast calls for snow we suggest a 4x4. The drive to Corvara runs about two and a half hours: flat Veneto farmland, then the road climbs and does not stop. If the lower valleys look bare in March, keep driving. The snow finds you above 1,500 meters.</p>
+
+    <span class="lede">Flights</span>
+    <p>A cash fare from the East Coast in March typically runs $600 to $1,000 round trip into Venice. Full disclosure: we flew standby on family airline benefits, which means our flights cost close to nothing and our dates flexed around open seats.</p>
+
+    <span class="lede">Where we stayed</span>
+    <div class="table-wrap">
+      <table class="oltre">
+        <thead><tr><th>Property</th><th>Dates</th><th>Nights</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>La Cianò, Corvara in Badia</td><td>Mar 12–16</td><td>4</td><td>US$526</td></tr>
+          <tr><td>Hotel Menardi, Cortina d'Ampezzo</td><td>Mar 16–18</td><td>2</td><td>US$427</td></tr>
+          <tr><td>Art Hotel Al Fagiano, Padova</td><td>Mar 18–19</td><td>1</td><td>US$111</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>La Cianò works out to roughly $130 a night with breakfast, in high season, minutes from the lifts. That rate is not a typo. It is what booking small and family-run gets you in Alta Badia, and the soft-boiled eggs come with it.</p>
+
+    <span class="lede">Lift access</span>
+    <p>We never bought a lift ticket in Italy, but that line deserves an honest footnote. Dolomiti Superski is an Ikon Pass partner: seven days across all twelve resorts on the full pass, five on Base, no blackout dates. We hold full Ikon passes for our home season in California and Utah, which run north of $1,200, so our Dolomites days cost nothing on top of what we were already spending. Without an Ikon, buy the Dolomiti Superski pass outright: day passes run 77 to 86 euros, a four-day pass is 317, and six days lands around 450. Booking online two or more days ahead saves five percent. Don't buy an Ikon for this trip alone; do consider the Dolomites if you already have one.</p>
+
+    <span class="lede">Dining</span>
+    <p>Rifugio lunches ran 20 to 30 euros a person: spaghetti, a spritz, an espresso. Dinners averaged 40 to 60 euros, from a village pizzeria on arrival night to the tasting menu at Cocun Cellar, 98 euros per person (60 for the optional wine pairing) and worth every cent. With breakfast included at La Cianò, plan on 60 to 90 euros per person per day, depending on how seriously you take dinner.</p>
+
+    <span class="lede">Evenings in Cortina</span>
+    <p>Faro, a cocktail bar off Largo delle Poste, pours an actual craft cocktail list in a town that mostly pours spritzes. Go after dinner; it's the one room in Cortina that trades polish back for intimacy.</p>
+
+    <span class="lede">When to go</span>
+    <p>Mid-March bought us near-empty pistes, long sun, and snow that softened by early afternoon. Below the tree line the cover was thinning; above it, Marmolada and Lagazuoi held. If powder is the priority, go in January or February. If the high routes and the patios are, mid-March treats you well, and the season-end lodging and pass deals start around then.</p>
+  </article>
+</section>
+
+<!-- BOTTOM LINE -->
+<article class="article-container">
+  <h2 class="beat-title">The Bottom Line</h2>
+
+  <div class="table-wrap">
+    <table class="oltre">
+      <caption>The Numbers</caption>
+      <tbody>
+        <tr><td>Accommodation</td><td>7 nights, 2 people — US$1,064 total, averaging US$152 per night</td></tr>
+        <tr><td>Flights</td><td>JFK–Venice, budget $600 to $1,000 cash. Full disclosure: we used family airline benefits.</td></tr>
+        <tr><td>Rental car</td><td>6 days — US$220</td></tr>
+        <tr><td>Lift pass</td><td>Dolomiti Superski, 6 days — €0 on top of our full Ikon passes. Outright: about €450.</td></tr>
+        <tr><td>Dining</td><td>€60 to €90 per person per day</td></tr>
+        <tr><td>Per person</td><td>Roughly US$1,100 to $1,400, excluding flights</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="ledger">
+    <h4>Hits</h4>
+    <p>The tasting menu at Cocun Cellar. Five euros for a horse to tow you across the valley floor.</p>
+    <h4>Misses</h4>
+    <p>The Cortina corso at peak hour. Skiing below the tree line after 2 PM in mid-March.</p>
+    <h4>The Unexpected</h4>
+    <p class="unexpected">Jonathan skied Cinque Torri alone while Stephanie rested, past stone trenches dug in 1915, and came back saying we had to return. So the next morning we drove back from Cortina, against the direction of the trip, so she could ski it too. Nothing about the circuit asks you to double back. That is exactly why we did. The best things in the Dolomites are the ones you turn around for.</p>
+  </div>
+</article>
+
+<footer class="article-footer">
+  <span class="brand-name">The Oltre Way</span>
+  <p>Off-circuit, culturally rich, discovered, not toured.</p>
+  <div class="series-nav"><a href="index.html">← All Dispatches</a></div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  (function () {
+    function initMap() {
+      if (typeof L === 'undefined') {
+        var box = document.getElementById('route-map');
+        if (box) {
+          box.style.display = 'none';
+          var n = box.nextElementSibling;
+          if (n && n.classList.contains('map-note')) n.textContent = 'Interactive map loads on the published site.';
+        }
+        return;
+      }
+      var map = L.map('route-map', { scrollWheelZoom: false }).setView([46.52, 11.95], 9);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; OpenStreetMap, &copy; CARTO', maxZoom: 18
+    }).addTo(map);
+
+    var stops = [
+      ['Venice (Marco Polo)', 45.505, 12.351, 'Fly in, rent the car.'],
+      ['Treviso', 45.666, 12.245, 'The better Venice. Radicchio capital.'],
+      ['Corvara in Badia', 46.551, 11.873, 'Base camp. La Cianò, soft-boiled eggs, the Sellaronda.'],
+      ['Arabba', 46.491, 11.875, 'Where we peeled off for Marmolada.'],
+      ['Marmolada', 46.434, 11.851, 'Last skiable glacier. Birds circle below you.'],
+      ['San Cassiano', 46.578, 11.926, 'Cocun Cellar. 24,000 bottles in the dark.'],
+      ['La Crusc', 46.610, 11.910, 'The chapel found by listening to the right person.'],
+      ['Cortina d\'Ampezzo', 46.537, 12.135, 'Beautiful and knows it. Base for the high routes.'],
+      ['Lagazuoi', 46.523, 12.011, 'Sheer rock and the 8km Armentarola.'],
+      ['Cinque Torri', 46.520, 12.040, 'Five towers, WWI trenches on piste.'],
+      ['Padova', 45.407, 11.876, 'The unplanned last night. The great-grandparents\' city.']
+    ];
+
+    var pts = [];
+    stops.forEach(function (s) {
+      var m = L.circleMarker([s[1], s[2]], {
+        radius: 6, color: '#6B2737', weight: 2, fillColor: '#C4724E', fillOpacity: 0.9
+      }).addTo(map);
+      m.bindPopup('<strong>' + s[0] + '</strong><br>' + s[3]);
+      pts.push([s[1], s[2]]);
+    });
+
+      map.fitBounds(L.latLngBounds(pts).pad(0.15));
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMap);
+    } else {
+      initMap();
+    }
+  })();
+</script>
+<script src="immersive-scroll.js"></script>
+</body>
+</html>
